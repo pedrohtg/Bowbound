@@ -111,12 +111,29 @@ public class PlayerController : MonoBehaviour {
 				//Y button;
 				GameController.ActiveHero().ChangeSkill(4);
 			}
-			if (Input.GetKey (KeyCode.Joystick1Button4)) {
+
+			/* Botões abaixados */
+			if (Input.GetKeyDown(KeyCode.Joystick1Button4)) {
 				//Left bumper
+				GameController.ActiveHero().ChangeLaunchForce();
 			}
-			if (Input.GetKey (KeyCode.Joystick1Button5)) {
+			if (Input.GetKeyDown(KeyCode.Joystick1Button5)) {
 				//Right bumper
+				GameController.ActiveHero().ChangeLaunchForce();
 			}
+
+
+			/* Botões em pé */
+			if (Input.GetKeyUp(KeyCode.Joystick1Button4)) {
+				//Left bumper
+				GameController.ActiveHero().Attack();
+			}
+			if (Input.GetKeyUp(KeyCode.Joystick1Button5)) {
+				//Right bumper
+				GameController.ActiveHero().Attack();
+			}
+
+
 			if (Input.GetKey (KeyCode.Joystick1Button6)) {
 				//Back button
 			}
@@ -172,12 +189,29 @@ public class PlayerController : MonoBehaviour {
 			if (Input.GetKey (KeyCode.Joystick1Button4)) {
 				// Left Bumper
 			}
-			if (Input.GetKey (KeyCode.Joystick1Button5)) {
+
+			/* Botões pressionados */
+			if (Input.GetKeyDown (KeyCode.Joystick1Button5)) {
 				// Right Bumper
+				GameController.ActiveHero().ChangeAngle();
 			}
-			if (Input.GetKey (KeyCode.Joystick1Button6)) {
+			if (Input.GetKeyDown (KeyCode.Joystick1Button6)) {
 				// Back Bumper
+				GameController.ActiveHero().ChangeAngle();
 			}
+
+
+			/* Botões soltos */
+			if (Input.GetKeyUp (KeyCode.Joystick1Button5)) {
+				// Right Bumper
+				GameController.ActiveHero().Attack();
+			}
+			if (Input.GetKeyUp (KeyCode.Joystick1Button6)) {
+				// Back Bumper
+				GameController.ActiveHero().Attack();
+			}
+
+
 			if (Input.GetKey (KeyCode.Joystick1Button7)) {
 				// Start button
 			}
@@ -232,12 +266,29 @@ public class PlayerController : MonoBehaviour {
 			if (Input.GetKey (KeyCode.Joystick1Button12)) {
 				// Right Stick Click
 			}
-			if (Input.GetKey (KeyCode.Joystick1Button13)) {
+
+			/* Botões apertados */
+			if (Input.GetKeyDown (KeyCode.Joystick1Button13)) {
 				// Left Bumper
+				GameController.ActiveHero().ChangeLaunchForce();
 			}
-			if (Input.GetKey (KeyCode.Joystick1Button14)) {
+			if (Input.GetKeyDown (KeyCode.Joystick1Button14)) {
 				// Right Bumper
+				GameController.ActiveHero().ChangeLaunchForce();
 			}
+
+
+			/* Botões soltos */
+			if (Input.GetKeyUp (KeyCode.Joystick1Button13)) {
+				// Left Bumper
+				GameController.ActiveHero().Attack();
+			}
+			if (Input.GetKeyUp (KeyCode.Joystick1Button14)) {
+				// Right Bumper
+				GameController.ActiveHero().Attack();
+			}
+
+
 			if (Input.GetKey (KeyCode.Joystick1Button15)) {
 				// Xbox Button
 			}
