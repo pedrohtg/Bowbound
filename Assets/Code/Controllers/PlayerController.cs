@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour {
 		
 	void inputKeyboard() {
 		bool UP, DOWN, LEFT, RIGHT;
+		int Skill;
 		UP = Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.W);
 		DOWN = Input.GetKeyDown (KeyCode.DownArrow) || Input.GetKeyDown (KeyCode.S);
 		LEFT = Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.A);
@@ -38,38 +39,41 @@ public class PlayerController : MonoBehaviour {
 
 		if (UP || DOWN) {
 			if (UP) {
-				
+				GameController.ActiveHero().ChangeAngle(true);
 			}	
 			if (DOWN) {
-				
+				GameController.ActiveHero().ChangeAngle(false);
 			}
 		} else if (LEFT || RIGHT) {
 			if (LEFT) {
-				
+				GameController.ActiveHero().Walk(true);
 			}
 			if (RIGHT) {
-				
+				GameController.ActiveHero().Walk(false);
 			}
 		}
 
 		if (Input.GetKey (KeyCode.Alpha1)) {
-		
+			GameController.ActiveHero().ChangeSkill(1);
 		}
-
 		if (Input.GetKey (KeyCode.Alpha2)) {
-			
+			GameController.ActiveHero().ChangeSkill(2);
 		}
 
 		if (Input.GetKey (KeyCode.Alpha3)) {
-
+			GameController.ActiveHero().ChangeSkill(3);
 		}
 
 		if (Input.GetKey (KeyCode.Alpha4)) {
-
+			GameController.ActiveHero().ChangeSkill(4);
 		}
 
 		if (Input.GetKeyDown (KeyCode.Space)) {
-			
+			GameController.ActiveHero().ChangeLaunchForce ();
+		}
+
+		if (Input.GetKeyUp (KeyCode.Space){
+			GameController.ActiveHero().Attack();
 		}
 	}
 
@@ -77,16 +81,17 @@ public class PlayerController : MonoBehaviour {
 		float X = Input.GetAxis ("Horizontal");
 		float Y = Input.GetAxis ("Vertical");
 
-		if (Mathf.Abs (X) >= Mathf.Abs (Y)) {
-
+		if (Mathf.Abs(X) >= Mathf.Abs(Y)) {
+			GameController.ActiveHero().Walk();
 		} else {
-		
+			GameController.ActiveHero().ChangeAngle();
 		}
 
 		switch (OS) {
 		case 1: // LINUX
 			if (Input.GetKey (KeyCode.Joystick1Button0)) {
 				//A button;
+
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button1)) {
 				//B button;

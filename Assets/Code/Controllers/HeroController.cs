@@ -16,6 +16,7 @@ public abstract class HeroController : MonoBehaviour {
 	private int _health, _energy, _speed;
 	private float _dmgCausedMultiplier, _dmgReceivedMultiplier, _velocity;
 	private float _angle, _launchForce;
+	private int _skill = 1;
 
 	public CharacterController ch;
 
@@ -70,8 +71,8 @@ public abstract class HeroController : MonoBehaviour {
 	public abstract bool UseSkill4 ();
 
 
-	public void Attack(int skill){
-		switch (skill) {
+	public void Attack(){
+		switch (_skill) {
 		case 1:
 			UseSkill1 ();
 			break;
@@ -93,6 +94,10 @@ public abstract class HeroController : MonoBehaviour {
 		default:
 			break;
 		}
+	}
+
+	public void ChangeSkill(int skill){
+		_skill = skill;
 	}
 
 	public void IncreaseEnergy(int dmg){
