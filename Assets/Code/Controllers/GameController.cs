@@ -10,7 +10,11 @@ public class GameController : MonoBehaviour
 	{
 		if (_myInstance == null) 
 		{
-			GameObject go = new GameObject("<GameController>");
+			GameObject go = GameObject.Find ("<GameController>");
+			if (go == null) 
+			{
+				go = new GameObject ("<GameController>");
+			}
 			_myInstance = go.AddComponent<GameController> ();
 		}
 
