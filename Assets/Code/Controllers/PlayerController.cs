@@ -8,12 +8,13 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		Debug.LogWarning ("Quero pegar blablaba");	
 
-		if (IsUnix ()) {
-			Debug.LogWarning ("Estou em um sistema Unix");	
-		} else {
-			Debug.LogWarning ("Estou em um sistema Windows");
+		if (Application.platform == RuntimePlatform.LinuxEditor || Application.platform == RuntimePlatform.LinuxPlayer) {
+			Debug.LogWarning ("Estou no linux!");
+		} else if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) {
+			Debug.LogWarning ("Estou no windows!");
+		} else if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer) {
+			Debug.LogWarning ("Estou no OSX!");
 		}
-			
 	}
 	
 	// Update is called once per frame
