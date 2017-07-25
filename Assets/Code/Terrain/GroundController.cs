@@ -45,12 +45,14 @@ public class GroundController : MonoBehaviour {
 	public void DestroyGround( Vector2 center, int radius )
 	{
 		Debug.Log ("chamou DestroyGround");
+		Debug.Log("center ORIGINAL x: "+center.x+"y: "+center.y);
 		V2int c = World2Pixel(center.x, center.y);
 		// c => centro do circulo de destruiçao em pixels
 		//int r = Mathf.RoundToInt(cc.bounds.size.x*widthPixel/widthWorld);
 		int  r = radius;
 		// r => raio do circulo de destruiçao em 
-
+		Debug.Log("center x: "+c.x+"y: "+c.y);
+		Debug.Log("radius r: "+r);
 		int x, y, px, nx, py, ny, d;
 
 		for (x = 0; x <= r; x++)
@@ -80,8 +82,10 @@ public class GroundController : MonoBehaviour {
 		V2int v = new V2int();
 
 		float dx = x-transform.position.x;
+		Debug.Log("dx "+ dx+" transform.position.x "+transform.position.x);
+		Debug.Log("widthPixel "+ widthPixel+" widthWorld "+widthWorld);
+		Debug.Log("heightPixel "+heightPixel+" heightWorld "+heightWorld);
 		v.x = Mathf.RoundToInt(0.5f*widthPixel+ dx*widthPixel/widthWorld);
-
 		float dy = y - transform.position.y;
 		v.y = Mathf.RoundToInt(0.5f * heightPixel + dy * heightPixel / heightWorld);
 
