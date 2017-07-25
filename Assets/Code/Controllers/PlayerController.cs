@@ -193,11 +193,11 @@ public class PlayerController : MonoBehaviour {
 			/* Botões pressionados */
 			if (Input.GetKeyDown (KeyCode.Joystick1Button5)) {
 				// Right Bumper
-				GameController.ActiveHero().ChangeAngle();
+				GameController.ActiveHero().ChangeLaunchForce();
 			}
 			if (Input.GetKeyDown (KeyCode.Joystick1Button6)) {
 				// Back Bumper
-				GameController.ActiveHero().ChangeAngle();
+				GameController.ActiveHero().ChangeLaunchForce();
 			}
 
 
