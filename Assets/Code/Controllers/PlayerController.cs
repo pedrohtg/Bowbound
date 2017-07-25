@@ -81,11 +81,12 @@ public class PlayerController : MonoBehaviour {
 		float X = Input.GetAxis ("Horizontal");
 		float Y = Input.GetAxis ("Vertical");
 
-		if (Mathf.Abs(X) >= Mathf.Abs(Y)) {
-			GameController.ActiveHero().Walk();
-		} else {
-			GameController.ActiveHero().ChangeAngle();
-		}
+		if (Mathf.Abs(X) >= 0.25F || Mathf.Abs(Y) >= 0.25F)
+			if (Mathf.Abs(X) >= Mathf.Abs(Y)) {
+				GameController.ActiveHero().Walk();
+			} else {
+				GameController.ActiveHero().ChangeAngle();
+			}
 
 		switch (OS) {
 		case 1: // LINUX
