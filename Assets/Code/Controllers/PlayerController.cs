@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour {
 		
 	void inputKeyboard() {
 		bool UP, DOWN, LEFT, RIGHT;
-		int Skill;
 		UP = Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.W);
 		DOWN = Input.GetKeyDown (KeyCode.DownArrow) || Input.GetKeyDown (KeyCode.S);
 		LEFT = Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.A);
