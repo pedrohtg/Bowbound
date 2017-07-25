@@ -16,16 +16,16 @@ public class PlayerController : MonoBehaviour {
 
 	int OS() {
 		if (Application.platform == RuntimePlatform.LinuxEditor || Application.platform == RuntimePlatform.LinuxPlayer) { 
-			return 1;
+			return 1; //Linux
 		} else if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) {
-			return 2;
+			return 2; //
 		} else if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer) {
 			return 3;
 		}
+
+		return 0;
 	}
-
-
-
+		
 	void inputKeyboard() {
 		bool UP, DOWN, LEFT, RIGHT;
 		UP = Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.W);
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour {
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button19)) {
 			}
-			break;
+		break;
 		}
 	}
 }
