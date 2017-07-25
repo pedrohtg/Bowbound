@@ -6,29 +6,53 @@ public class GameController : MonoBehaviour
 {
 	private static GameController _myInstance;
 
-
-	public static GameController Instance
+	private static GameController Instance()
 	{
-		get 
+		if (_myInstance == null) 
 		{
-			if (_myInstance == null) 
-			{
-				
-			}
-
-			return null;
+			GameObject go = new GameObject("<GameController>");
+			_myInstance = go.AddComponent<GameController> ();
 		}
+
+		return _myInstance;
 	}
 		
-	// Use this for initialization
-	void Start () 
+	private Vector2 		_myWind;
+	private HeroController	_myActiveHero;
+
+	public static Vector2			Wind()
 	{
-		
+		return Instance ()._myWind;
 	}
-	
-	// Update is called once per frame
-	void Update () 
+
+	public static HeroController 	ActiveHero()
 	{
-		
+		return Instance ()._myActiveHero;
 	}
+
+	public static void 	Kill(HeroController hero)
+	{
+	}
+
+	#region GAME CONFIGURATIONS
+	private int				_myTurnPrepTime;
+	private int				_myTurnTime;
+	private bool			_myIsUsingJoystick;
+
+	public static int	Config_TurnPrepTime()
+	{
+		return Instance()._myTurnPrepTime;
+	}
+
+	public static int	Config_TurnTime()
+	{
+		return Instance()._myTurnTime;
+	}
+
+	public static bool 	Config_IsUsingJoystick()
+	{
+		return Instance()._myIsUsingJoystick;
+	}
+	#endregion
+
 }
