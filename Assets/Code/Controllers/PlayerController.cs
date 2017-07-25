@@ -81,26 +81,35 @@ public class PlayerController : MonoBehaviour {
 		float X = Input.GetAxis ("Horizontal");
 		float Y = Input.GetAxis ("Vertical");
 
-		if (Mathf.Abs(X) >= 0.25F || Mathf.Abs(Y) >= 0.25F)
+		if (Mathf.Abs (X) >= 0.25F || Mathf.Abs (Y) >= 0.25F) {
 			if (Mathf.Abs(X) >= Mathf.Abs(Y)) {
-				GameController.ActiveHero().Walk();
+				bool a;
+				a = (X > 0) ? true : false;
+				GameController.ActiveHero().Walk(a);
 			} else {
-				GameController.ActiveHero().ChangeAngle();
+				bool a;
+				a = (Y > 0) ? true : false;
+				GameController.ActiveHero().ChangeAngle(a);
 			}
+		}
 
 		switch (OS) {
 		case 1: // LINUX
 			if (Input.GetKey (KeyCode.Joystick1Button0)) {
 				//A button;
+				GameController.ActiveHero().ChangeSkill(1);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button1)) {
 				//B button;
+				GameController.ActiveHero().ChangeSkill(2);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button2)) {
 				//X button;
+				GameController.ActiveHero().ChangeSkill(3);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button3)) {
 				//Y button;
+				GameController.ActiveHero().ChangeSkill(4);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button4)) {
 				//Left bumper
@@ -123,15 +132,19 @@ public class PlayerController : MonoBehaviour {
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button11)) {
 				//D-Pad Left
+				GameController.ActiveHero().Walk(true);
 			} 
 			if (Input.GetKey (KeyCode.Joystick1Button12)) {
 				//D-Pad Right
+				GameController.ActiveHero().Walk(false);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button13)) {
 				//D-Pad Up
+				GameController.ActiveHero().ChangeAngle(true);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button14)) {
 				//D-Pad Down 
+				GameController.ActiveHero().ChangeAngle(false);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button15)) {}
 			if (Input.GetKey (KeyCode.Joystick1Button16)) {}
@@ -142,15 +155,19 @@ public class PlayerController : MonoBehaviour {
 		case 2: // WINDOWS
 			if (Input.GetKey (KeyCode.Joystick1Button0)) {
 				// A button
+				GameController.ActiveHero().ChangeSkill(1);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button1)) {
 				// B button
+				GameController.ActiveHero().ChangeSkill(2);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button2)) {
 				// X button
+				GameController.ActiveHero().ChangeSkill(3);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button3)) {
 				// Y button
+				GameController.ActiveHero().ChangeSkill(4);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button4)) {
 				// Left Bumper
@@ -189,15 +206,19 @@ public class PlayerController : MonoBehaviour {
 			if (Input.GetKey (KeyCode.Joystick1Button4)) {}
 			if (Input.GetKey (KeyCode.Joystick1Button5)) {
 				// D-Pad Up
+				GameController.ActiveHero().ChangeAngle(true);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button6)) {
 				// D-Pad Down
+				GameController.ActiveHero().ChangeAngle(false);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button7)) {
 				// D-Pad Left
+				GameController.ActiveHero().Walk(false);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button8)) {
 				// D-Pad Right
+				GameController.ActiveHero().Walk(true);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button9)) {
 				// Start Button
@@ -222,15 +243,19 @@ public class PlayerController : MonoBehaviour {
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button16)) {
 				// Button A
+				GameController.ActiveHero().ChangeSkill(1);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button17)) {
 				// Button B
+				GameController.ActiveHero().ChangeSkill(2);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button18)) {
 				// Button X
+				GameController.ActiveHero().ChangeSkill(3);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button19)) {
 				// Button Y
+				GameController.ActiveHero().ChangeSkill(4);
 			}
 		break;
 		}
