@@ -3,16 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-	void Start () {
-		Debug.LogWarning ("Quero pegar blablaba");	
+	int OperationSystem;
 
-		inputJoystick ();
-		inputKeyboard ();
+	void Start () {
+		OperationSystem = OS ();		
 	}
 
 	void Update () {
-		
+		inputJoystick (OperationSystem);
+		inputKeyboard ();
 	}
+
+	int OS() {
+		if (Application.platform == RuntimePlatform.LinuxEditor || Application.platform == RuntimePlatform.LinuxPlayer) { 
+			return 1;
+		} else if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) {
+			return 2;
+		} else if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer) {
+			return 3;
+		}
+	}
+
+
 
 	void inputKeyboard() {
 		bool UP, DOWN, LEFT, RIGHT;
@@ -58,14 +70,18 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void inputJoystick() {
-		if (Application.platform == RuntimePlatform.LinuxEditor || Application.platform == RuntimePlatform.LinuxPlayer){ 
-			Debug.LogWarning ("Estou no linux!");
+	void inputJoystick(int OS) {
+		switch (OS) {
+		case 1:
 			float X, Y;
 
 			X = Input.GetAxis ("Horizontal");
-			Y = Input.GetAxis("Vertical");
-			
+			Y = Input.GetAxis ("Vertical");
+
+			if (Mathf.Abs (X) >= Mathf.Abs (Y)) {
+
+			}
+
 			if (Input.GetKey (KeyCode.Joystick1Button0)) {
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button1)) {
@@ -106,11 +122,7 @@ public class PlayerController : MonoBehaviour {
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button19)) {
 			}
-		} else if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) {
-			Debug.LogWarning ("Estou no windows!");
-		} 
-		else if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer) {
-			Debug.LogWarning ("Estou no OSX!");
+			break;
 		}
 	}
 }
