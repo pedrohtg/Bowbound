@@ -42,3 +42,14 @@
 
 + [É assim que faz](http://mpprado.blogspot.com.br/2015/05/unity-terreno-destrutivel.html?view=classic)
 + [E assim](https://forum.unity3d.com/threads/any-interest-in-2d-destructible-terrain-e-g-lemmings-worms-sandbox-etc.358912/)
+
+# Classes (Organização de Jogo)
+**Game Controller**
+    - Turno
+    - Player Input Alloc
+
+**Player**
+- **Player input**
+- **Player controller**
+- **Personagem**
+    - Dados do boneco
