@@ -1,6 +1,6 @@
 # Bowbound
 
-** 7 classes: **
+**7 classes:**
 -Saber
 -Archer
 -Caster
@@ -9,4 +9,4 @@
 -Berserker
 -Lancer
 
-** Terreno que quebra **
+**Terreno que quebra**
