@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour {
 			GameController.ActiveHero().ChangeLaunchForce ();
 		}
 
-		if (Input.GetKeyUp (KeyCode.Space){
+		if (Input.GetKeyUp (KeyCode.Space)){
 			GameController.ActiveHero().Attack();
 		}
 	}
@@ -92,7 +92,6 @@ public class PlayerController : MonoBehaviour {
 		case 1: // LINUX
 			if (Input.GetKey (KeyCode.Joystick1Button0)) {
 				//A button;
-
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button1)) {
 				//B button;
