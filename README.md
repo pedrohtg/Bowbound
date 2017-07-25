@@ -40,5 +40,5 @@
 
 **Terreno que quebra:**
 
--[É assim que faz](http://mpprado.blogspot.com.br/2015/05/unity-terreno-destrutivel.html?view=classic)
--[E assim](https://forum.unity3d.com/threads/any-interest-in-2d-destructible-terrain-e-g-lemmings-worms-sandbox-etc.358912/)
++ [É assim que faz](http://mpprado.blogspot.com.br/2015/05/unity-terreno-destrutivel.html?view=classic)
++ [E assim](https://forum.unity3d.com/threads/any-interest-in-2d-destructible-terrain-e-g-lemmings-worms-sandbox-etc.358912/)
