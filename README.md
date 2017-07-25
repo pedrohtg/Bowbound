@@ -45,6 +45,7 @@
 
 # Classes (Organização de Jogo)
 **Game Controller**
+
     - Turno
     - Player Input Alloc
 
