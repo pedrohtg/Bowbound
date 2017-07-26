@@ -5,6 +5,7 @@ using UnityEngine;
 public class DestructionTester : MonoBehaviour {
 
 	public int r = 25;
+	public GameObject bullet;
 
 	Vector3 move;
 	GroundController gc;
@@ -41,8 +42,14 @@ public class DestructionTester : MonoBehaviour {
 			Vector2 p2;
 			p2.x = transform.position.x;
 			p2.y = transform.position.y;
-			Debug.Log(p2);
 			gc.DestroyGround(p2, r);
+			//gc.DestroyArc(p2,p2,p2);
+		}
+
+		if(Input.GetKeyDown(KeyCode.T))
+		{
+			GameObject go = GameObject.Instantiate(bullet);
+			go.GetComponent<BulletController>().Initialize( (new Vector2(1,2)).normalized, 0.15f);
 		}
 
 		transform.position += move;
