@@ -49,7 +49,7 @@ public class DestructionTester : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.T))
 		{
 			GameObject go = GameObject.Instantiate(bullet);
-			go.GetComponent<BulletController>().Initialize( (new Vector2(1,2)).normalized, 0.15f);
+			go.GetComponent<BulletController>().Initialize( (new Vector2(1,0)).normalized, 8f);
 		}
 
 		transform.position += move;

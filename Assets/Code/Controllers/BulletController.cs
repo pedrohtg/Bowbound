@@ -8,16 +8,18 @@ public abstract class BulletController : MonoBehaviour {
 	protected Vector2 dir;
 	protected float speed;
 	protected Vector2 currDir;
+	public GameObject sprite;
 	public int dmg;
 	public float windEffect; // 0 até 1
 	public float weight;
 	public int radius;
+	protected float currTime;
 	public Prime31.CharacterController2D ch;
 	public abstract void Move();
 	public abstract void HitHero(HeroController hero);
-	public abstract void HitGround();
+	public abstract void HitGround(Vector2 point);
 	public abstract void Initialize(Vector2 dir,float speed);
-	protected void Destoy()
+	public void Destoy()
 	{
 		Destroy(this.gameObject);	
 	}
@@ -26,4 +28,24 @@ public abstract class BulletController : MonoBehaviour {
 	{
 		Move();	
 	}
+
+	void OnCollisionEnter2D(Collision2D collision){
+		Debug.Log("HIT");
+		if(collision.collider.name == "GroundObject"){
+			Vector2 Point = new Vector2();
+			for(int i = 0; i < collision.contacts.Length; i++){
+				Point += collision.contacts[i].point;
+			}
+			Point.x /= collision.contacts.Length;
+			Point.y /= collision.contacts.Length;
+			HitGround(Point);
+		}
+		else if(collision.collider.name == "Player"){
+			Debug.Log("player");
+		}
+		else{
+			Debug.Log("OBJECT");
+		}
+	}
+
 }

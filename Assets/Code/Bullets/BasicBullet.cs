@@ -9,29 +9,48 @@ public class BasicBullet : BulletController
 		this.dir=dir;
 		this.speed=speed;
 		this.currDir=dir*speed;
+		this.currTime=0;
 	}
 	public override void Move()
 	{
-		Vector3 vec=new Vector3();
-		vec.x=currDir.x;
-		vec.y=currDir.y;
-		ch.move(vec);
+		float t=currTime;
+		float t2=t*t;
+		float deltaTime=Time.deltaTime;
 		Vector2 wind=GameController.Wind();
-		currDir.x+=Time.deltaTime*windEffect*wind.x;
-		currDir.y+=Time.deltaTime*(windEffect*wind.y-weight);
+		float pxt_last=dir.x*speed*t+0.5f*windEffect*wind.x*t2;
+		float pyt_last=dir.y*speed*t+0.5f*(windEffect*wind.y)*t2-0.5f*(weight)*t2;
+		t=t+deltaTime;
+		t2=t*t;
+		float pxt_new=dir.x*speed*t+0.5f*windEffect*wind.x*t2;
+		float pyt_new=dir.y*speed*t+0.5f*(windEffect*wind.y)*t2-0.5f*(weight)*t2;
+		currDir=new Vector2(pxt_new-pxt_last,pyt_new-pyt_last);
+		ch.move(currDir);
+		currTime=t;
+		if(t > 3f) Destoy();
 	}
 	public override void HitHero(HeroController hero)
 	{
 		hero.TakeDamage(dmg);
-		Invoke("Destoy()",0.2f);
+		//Invoke("Destoy()",0.2f);
+		Destoy();
 	}
-	public override void HitGround()
+	public override void HitGround(Vector2 point)
 	{
-		groundController.DestroyGround(dir,radius); //alterar depois
-		Invoke("Destoy()",0.2f);
+		groundController.DestroyGround(point,radius);
+		Destoy();
+		//Invoke("Destoy()",0.2f);
 	}
 	void Update () 
 	{
-		Move();	
+		Move();
+		Vector2 newDir=currDir.normalized;
+		float ang=Mathf.Asin(newDir.y)*Mathf.Rad2Deg;
+		if(newDir.x<0f)ang=180-ang;
+		//sprite.transform.Rotate(new Vector3(0,0,ang));
+		//sprite.transform.LookAt(new Vector3(0,0,ang));
+		sprite.transform.localEulerAngles=new Vector3(0,0,ang);
 	}
+
+
+
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundController : MonoBehaviour {
 
-	public string spriteName;
+	public string spriteName="1";
 	private SpriteRenderer sr;
 	private float widthWorld, heightWorld;
 	private int widthPixel, heightPixel;
