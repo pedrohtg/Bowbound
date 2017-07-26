@@ -32,9 +32,10 @@ public class GameController : MonoBehaviour
 		return _myInstance;
 	}
 		
-	private Vector2 		_myWind;
-	private HeroController	_myActiveHero;
-	private ArrayList 		_myHeroActionOrder;
+	private Vector2 			_myWind;
+	private HeroController		_myActiveHero;
+	private ArrayList 			_myHeroActionOrder;
+	private PlayerController	_myPlayerController;
 
 	public static Vector2			Wind()
 	{
@@ -54,7 +55,15 @@ public class GameController : MonoBehaviour
 
 	public static void BeginTurn()
 	{
+		Instance ()._myPlayerController.inputActive = false;
+
+		if(Instance ()._myActiveHero != null)
+			Instance ()._myActiveHero.EndMyTurn ();
+
 		Instance ()._myActiveHero = ((GameObject)(Instance ()._myHeroActionOrder [0])).GetComponent<HeroController> ();
+		Instance ()._myActiveHero.StartMyTurn ();
+
+		Camera.main.GetComponent<SmoothFollow> ().target = Instance ()._myActiveHero.transform;
 
 		Instance ()._myText_TurnPrepTime.gameObject.SetActive (true);
 
@@ -65,8 +74,6 @@ public class GameController : MonoBehaviour
 			Instance ()._myText_PlayerName.text	= "" + Instance ()._myActiveHero.GetName ();
 		else
 			Instance ()._myText_PlayerName.text	= "CADE HEROI?";
-
-		Instance ()._myActiveHero = null;
 
 		Instance ()._myCurrTurnPrepTime = GameConfig.turnPreparationTime;
 		Instance ()._myCurrTurnTime 	= GameConfig.turnTime;
@@ -83,7 +90,7 @@ public class GameController : MonoBehaviour
 		{
 			Invoke ("TurnCountDown", 1.0f);
 			Instance ()._myText_TurnPrepTime.gameObject.SetActive (false);
-			Instance ()._myActiveHero = ((GameObject)(Instance ()._myHeroActionOrder [0])).GetComponent<HeroController> ();
+			Instance ()._myPlayerController.inputActive = true;
 		} 
 		else 
 		{
@@ -104,7 +111,7 @@ public class GameController : MonoBehaviour
 		{
 			Instance ()._myHeroActionOrder.RemoveAt (0);
 			Instance ()._myHeroActionOrder.Add (Instance ()._myActiveHero.gameObject);
-			Debug.Log ("PLAYER COUNT " + Instance ()._myHeroActionOrder.Count + "/" + GameConfig.characterAmount);
+			//Debug.Log ("PLAYER COUNT " + Instance ()._myHeroActionOrder.Count + "/" + GameConfig.characterAmount);
 			BeginTurn ();
 		} 
 		else 
@@ -130,6 +137,8 @@ public class GameController : MonoBehaviour
 
 	void Start()
 	{
+		Instance ()._myPlayerController	= GetComponent<PlayerController> ();
+
 		Instance()._myText_TurnTime		= GameObject.Find ("<TurnTime>").GetComponent<UnityEngine.UI.Text>();
 		Instance()._myText_TurnPrepTime	= GameObject.Find ("<TurnBegins>").GetComponent<UnityEngine.UI.Text>();
 		Instance()._myText_PlayerName	= GameObject.Find ("<PlayerName>").GetComponent<UnityEngine.UI.Text>();
@@ -137,8 +146,9 @@ public class GameController : MonoBehaviour
 		Array.Sort (GameConfig.selectedClasses);
 		Instance ()._myHeroActionOrder = new ArrayList ();
 
-		for (int i = 0; i < GameConfig.characterAmount; i++) {
-			Debug.Log ("CHAR " + GameConfig.selectedClasses [i]);
+		for (int i = 0; i < GameConfig.characterAmount; i++) 
+		{
+			//Debug.Log ("CHAR " + GameConfig.selectedClasses [i]);
 			GameObject go = GameObject.Instantiate (HeroPrefabs [GameConfig.selectedClasses [i]]);
 			go.GetComponent<HeroController> ().Initialise ();
 			Instance ()._myHeroActionOrder.Add (go);

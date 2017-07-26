@@ -31,7 +31,18 @@ public abstract class HeroController : MonoBehaviour {
 			go.transform.SetParent (this.gameObject.transform);
 			go.transform.localScale = new Vector3(1.5f,2.0f,1);
 			go.transform.localPosition = new Vector3(0, 0, 0);
+			ac.Hide ();
 		}
+	}
+
+	public void StartMyTurn()
+	{
+		ac.Show ();
+	}
+
+	public void EndMyTurn()
+	{
+		ac.Hide ();
 	}
 
 	public string GetName()
@@ -44,14 +55,16 @@ public abstract class HeroController : MonoBehaviour {
 		if (dir == LEFT) 
 		{
 			_dir = LEFT;
-			Debug.Log (ch);
+			//Debug.Log (ch);
 			ch.move(new Vector3(-_velocity, 0, 0));
+			ac.FaceLeft ();
 		} 
 		else 
 		{
 			_dir = RIGHT;
-			Debug.Log (ch);
+			//Debug.Log (ch);
 			ch.move(new Vector3(_velocity, 0, 0));	
+			ac.FaceRight ();
 		}
 	}
 

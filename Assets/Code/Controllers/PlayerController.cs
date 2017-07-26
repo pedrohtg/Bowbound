@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+	public bool inputActive = true;
 	int OperationSystem;
 
 	void Start () {
@@ -10,10 +11,16 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update () {
-		if (GameConfig.useJoystick) {
-			inputJoystick (OperationSystem);
-		} else {
-			inputKeyboard ();
+		if (inputActive) 
+		{
+			if (GameConfig.useJoystick) 
+			{
+				inputJoystick (OperationSystem);
+			}
+			else
+			{
+				inputKeyboard ();
+			}
 		}
 	}
 

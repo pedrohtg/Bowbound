@@ -10,6 +10,8 @@ public class GameConfig : MonoBehaviour
 	public static int turnTime 		= 30;
 	public static int maxTurnTime 	= 60;
 
+	public static float maxAngle = 45.0f;
+
 	public static int[] selectedClasses = new int[7];
 	public static int characterAmount;
 

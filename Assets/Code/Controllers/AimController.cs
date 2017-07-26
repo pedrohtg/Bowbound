@@ -18,64 +18,43 @@ public class AimController : MonoBehaviour {
 	public bool show = false;
 	public bool updateOnlyAim = false;
 
-	// Use this for initialization
-	void Start () {
-		circle = GameObject.Instantiate(circle);
-		btLimiter = GameObject.Instantiate(btLimiter);
-		upLimiter = GameObject.Instantiate(upLimiter);
-		aim = GameObject.Instantiate(aim);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (hide) {
-			Hide ();
-		} 
-		else {
-			if (updateOnlyAim) {
-				aim.transform.localEulerAngles = new Vector3 (0, 0, aimAng);
-				aim.GetComponent<SpriteRenderer>().enabled = true;
-			}
-			if (show) {
-				Show ();		
-			}
-		}
+	void Start()
+	{
+		upLimiter.transform.eulerAngles = new Vector3 (0.0f, 0.0f, GameConfig.maxAngle);
 	}
 
-	public void Hide(){
-		circle.transform.position = circleCenter;
-		circle.GetComponent<SpriteRenderer>().enabled = false;
-
-		btLimiter.transform.localEulerAngles = new Vector3 (0, 0, btLimiterAng);
-		btLimiter.GetComponent<SpriteRenderer>().enabled = false;
-
-		upLimiter.transform.localEulerAngles = new Vector3 (0, 0, upLimiterAng);
-		upLimiter.GetComponent<SpriteRenderer>().enabled = false;
-
-		aim.transform.localEulerAngles = new Vector3 (0, 0, aimAng);
-		aim.GetComponent<SpriteRenderer>().enabled = false;
+	public void Hide()
+	{
+		//Debug.Log ("HIDE AIM!!! ");
+		circle.SetActive (false);
+		btLimiter.SetActive (false);
+		upLimiter.SetActive (false);
+		aim.SetActive (false);
 	}
 
-	public void Show(){
-		circle.transform.position = circleCenter;
-		circle.GetComponent<SpriteRenderer>().enabled = true;
-
-		btLimiter.transform.localEulerAngles = new Vector3 (0, 0, btLimiterAng);
-		btLimiter.GetComponent<SpriteRenderer>().enabled = true;
-
-		upLimiter.transform.localEulerAngles = new Vector3 (0, 0, upLimiterAng);
-		upLimiter.GetComponent<SpriteRenderer>().enabled = true;
-
-		aim.transform.localEulerAngles = new Vector3 (0, 0, aimAng);
-		aim.GetComponent<SpriteRenderer>().enabled = true;
-
-
-		show = false;
-		updateOnlyAim = true;
-
+	public void Show()
+	{
+		//Debug.Log ("SHOW AIM!!! ");
+		circle.SetActive (true);
+		btLimiter.SetActive (true);
+		upLimiter.SetActive (true);
+		aim.SetActive (true);
 	}
 
-	public void SetAimAng(float ang){
+	public void FaceRight()
+	{
+		upLimiter.transform.eulerAngles = new Vector3 (0.0f, 0.0f, GameConfig.maxAngle);
+		btLimiter.transform.eulerAngles = new Vector3 (0.0f, 0.0f, 0.0f);
+	}
+
+	public void FaceLeft()
+	{
+		upLimiter.transform.eulerAngles = new Vector3 (0.0f, 0.0f, 180.0f - GameConfig.maxAngle);
+		btLimiter.transform.eulerAngles = new Vector3 (0.0f, 0.0f, 180.0f);
+	}
+
+	public void SetAimAng(float ang)
+	{
 		Debug.Log (ang);
 		aimAng = ang * Mathf.Rad2Deg;
 		Debug.Log (aimAng);
@@ -83,13 +62,15 @@ public class AimController : MonoBehaviour {
 		show = true;
 	}
 
-	public void SetBtLimiterAng(float ang){
+	public void SetBtLimiterAng(float ang)
+	{
 		btLimiterAng = ang * Mathf.Rad2Deg;
 		btLimiter.transform.localEulerAngles = new Vector3 (0, 0, ang * Mathf.Rad2Deg);
 		show = true;
 	}
 
-	public void SetUpLimiterAng(float ang){
+	public void SetUpLimiterAng(float ang)
+	{
 		upLimiterAng = ang * Mathf.Rad2Deg;
 		upLimiter.transform.localEulerAngles = new Vector3 (0, 0, ang * Mathf.Rad2Deg);
 		show = true;
