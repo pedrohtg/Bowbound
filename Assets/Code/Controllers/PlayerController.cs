@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour {
 	int OperationSystem;
 
 	void Start () {
-		OperationSystem = OS ();		
+		OperationSystem = OS ();
 	}
 
 	void Update () {
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	int OS() {
-		if (Application.platform == RuntimePlatform.LinuxEditor || Application.platform == RuntimePlatform.LinuxPlayer) { 
+		if (Application.platform == RuntimePlatform.LinuxEditor || Application.platform == RuntimePlatform.LinuxPlayer) {
 			return 1; //Linux
 		} else if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) {
 			return 2; //Windows
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour {
 
 		return 0;
 	}
-		
+
 	void inputKeyboard() {
 		bool UP, DOWN, LEFT, RIGHT;
 		UP = Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.W);
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 		if (UP || DOWN) {
 			if (UP) {
 				GameController.ActiveHero().ChangeAngle(true);
-			}	
+			}
 			if (DOWN) {
 				GameController.ActiveHero().ChangeAngle(false);
 			}
@@ -121,7 +121,6 @@ public class PlayerController : MonoBehaviour {
 				GameController.ActiveHero().ChangeLaunchForce();
 			}
 
-
 			/* Botões em pé */
 			if (Input.GetKeyUp(KeyCode.Joystick1Button4)) {
 				//Left bumper
@@ -133,23 +132,23 @@ public class PlayerController : MonoBehaviour {
 			}
 
 
-			if (Input.GetKey (KeyCode.Joystick1Button6)) {
-				//Back button
-			}
-			if (Input.GetKey (KeyCode.Joystick1Button7)) {
-				//Start button
-			}
-			if (Input.GetKey (KeyCode.Joystick1Button8)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button9)) {
-				//Left Stick Click
-			}
-			if (Input.GetKey (KeyCode.Joystick1Button10)) {
-				//Right Stick Click
-			}
+			// if (Input.GetKey (KeyCode.Joystick1Button6)) {
+			// 	//Back button
+			// }
+			// if (Input.GetKey (KeyCode.Joystick1Button7)) {
+			// 	//Start button
+			// }
+			// if (Input.GetKey (KeyCode.Joystick1Button8)) {}
+			// if (Input.GetKey (KeyCode.Joystick1Button9)) {
+			// 	//Left Stick Click
+			// }
+			// if (Input.GetKey (KeyCode.Joystick1Button10)) {
+			// 	//Right Stick Click
+			// }
 			if (Input.GetKey (KeyCode.Joystick1Button11)) {
 				//D-Pad Left
 				GameController.ActiveHero().Walk(true);
-			} 
+			}
 			if (Input.GetKey (KeyCode.Joystick1Button12)) {
 				//D-Pad Right
 				GameController.ActiveHero().Walk(false);
@@ -159,84 +158,82 @@ public class PlayerController : MonoBehaviour {
 				GameController.ActiveHero().ChangeAngle(true);
 			}
 			if (Input.GetKey (KeyCode.Joystick1Button14)) {
-				//D-Pad Down 
+				//D-Pad Down
 				GameController.ActiveHero().ChangeAngle(false);
 			}
-			if (Input.GetKey (KeyCode.Joystick1Button15)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button16)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button17)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button18)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button19)) {}
+			// if (Input.GetKey (KeyCode.Joystick1Button15)) {}
+			// if (Input.GetKey (KeyCode.Joystick1Button16)) {}
+			// if (Input.GetKey (KeyCode.Joystick1Button17)) {}
+			// if (Input.GetKey (KeyCode.Joystick1Button18)) {}
+			// if (Input.GetKey (KeyCode.Joystick1Button19)) {}
 		break;
 		case 2: // WINDOWS
-			if (Input.GetKey (KeyCode.Joystick1Button0)) {
-				// A button
+			if (Input.GetKey (KeyCode.Joystick1Button0)) { // A button
 				GameController.ActiveHero().ChangeSkill(1);
 			}
-			if (Input.GetKey (KeyCode.Joystick1Button1)) {
-				// B button
+			if (Input.GetKey (KeyCode.Joystick1Button1)) { // B button
 				GameController.ActiveHero().ChangeSkill(2);
 			}
-			if (Input.GetKey (KeyCode.Joystick1Button2)) {
-				// X button
+			if (Input.GetKey (KeyCode.Joystick1Button2)) { // X button
 				GameController.ActiveHero().ChangeSkill(3);
 			}
-			if (Input.GetKey (KeyCode.Joystick1Button3)) {
-				// Y button
+			if (Input.GetKey (KeyCode.Joystick1Button3)) { // Y button
 				GameController.ActiveHero().ChangeSkill(4);
 			}
-			if (Input.GetKey (KeyCode.Joystick1Button4)) {
-				// Left Bumper
+
+            /* Botões pressionados */
+			if (Input.GetKeyDown (KeyCode.Joystick1Button4)) {
+                // Left Bumper
+                GameController.ActiveHero().ChangeLaunchForce();
 			}
 
-			/* Botões pressionados */
 			if (Input.GetKeyDown (KeyCode.Joystick1Button5)) {
 				// Right Bumper
-				GameController.ActiveHero().ChangeLaunchForce();
+                GameController.ActiveHero().ChangeLaunchForce();
 			}
-			if (Input.GetKeyDown (KeyCode.Joystick1Button6)) {
-				// Back Bumper
-				GameController.ActiveHero().ChangeLaunchForce();
-			}
-
 
 			/* Botões soltos */
+            if (Input.GetKeyDown (KeyCode.Joystick1Button4)) {
+                // Left Bumper
+                GameController.ActiveHero().Attack();
+			}
+
 			if (Input.GetKeyUp (KeyCode.Joystick1Button5)) {
 				// Right Bumper
 				GameController.ActiveHero().Attack();
 			}
-			if (Input.GetKeyUp (KeyCode.Joystick1Button6)) {
-				// Back Bumper
-				GameController.ActiveHero().Attack();
-			}
 
+            // if (Input.GetKey (KeyCode.Joystick1Button6)) {
+			// 	// Back Bumper
+			// }
+            //
+			// if (Input.GetKey (KeyCode.Joystick1Button7)) {
+			// 	// Start button
+			// }
+			// if (Input.GetKey (KeyCode.Joystick1Button8)) {
+			// 	// Left Stick Click
+			// }
+			// if (Input.GetKey (KeyCode.Joystick1Button9)) {
+			// 	// Right Stick Click
+			// }
 
-			if (Input.GetKey (KeyCode.Joystick1Button7)) {
-				// Start button
-			}
-			if (Input.GetKey (KeyCode.Joystick1Button8)) {
-				// Left Stick Click
-			}
-			if (Input.GetKey (KeyCode.Joystick1Button9)) {
-				// Right Stick Click
-			}
-			if (Input.GetKey (KeyCode.Joystick1Button10)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button11)) {} 
-			if (Input.GetKey (KeyCode.Joystick1Button12)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button13)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button14)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button15)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button16)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button17)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button18)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button19)) {}
+			//if (Input.GetKey (KeyCode.Joystick1Button10)) {}
+			//if (Input.GetKey (KeyCode.Joystick1Button11)) {}
+			//if (Input.GetKey (KeyCode.Joystick1Button12)) {}
+			//if (Input.GetKey (KeyCode.Joystick1Button13)) {}
+			//if (Input.GetKey (KeyCode.Joystick1Button14)) {}
+			//if (Input.GetKey (KeyCode.Joystick1Button15)) {}
+			//if (Input.GetKey (KeyCode.Joystick1Button16)) {}
+			//if (Input.GetKey (KeyCode.Joystick1Button17)) {}
+			//if (Input.GetKey (KeyCode.Joystick1Button18)) {}
+			//if (Input.GetKey (KeyCode.Joystick1Button19)) {}
 			break;
 		case 3: //OSX
-			if (Input.GetKey (KeyCode.Joystick1Button0)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button1)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button2)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button3)) {}
-			if (Input.GetKey (KeyCode.Joystick1Button4)) {}
+			//if (Input.GetKey (KeyCode.Joystick1Button0)) {}
+			//if (Input.GetKey (KeyCode.Joystick1Button1)) {}
+			//if (Input.GetKey (KeyCode.Joystick1Button2)) {}
+			//if (Input.GetKey (KeyCode.Joystick1Button3)) {}
+			//if (Input.GetKey (KeyCode.Joystick1Button4)) {}
 			if (Input.GetKey (KeyCode.Joystick1Button5)) {
 				// D-Pad Up
 				GameController.ActiveHero().ChangeAngle(true);
@@ -253,18 +250,18 @@ public class PlayerController : MonoBehaviour {
 				// D-Pad Right
 				GameController.ActiveHero().Walk(true);
 			}
-			if (Input.GetKey (KeyCode.Joystick1Button9)) {
-				// Start Button
-			}
-			if (Input.GetKey (KeyCode.Joystick1Button10)) {
-				// Back Button
-			}
-			if (Input.GetKey (KeyCode.Joystick1Button11)) {
-				// Left Stick Click
-			} 
-			if (Input.GetKey (KeyCode.Joystick1Button12)) {
-				// Right Stick Click
-			}
+			// if (Input.GetKey (KeyCode.Joystick1Button9)) {
+			// 	// Start Button
+			// }
+			// if (Input.GetKey (KeyCode.Joystick1Button10)) {
+			// 	// Back Button
+			// }
+			// if (Input.GetKey (KeyCode.Joystick1Button11)) {
+			// 	// Left Stick Click
+			// }
+			// if (Input.GetKey (KeyCode.Joystick1Button12)) {
+			// 	// Right Stick Click
+			// }
 
 			/* Botões apertados */
 			if (Input.GetKeyDown (KeyCode.Joystick1Button13)) {
@@ -275,7 +272,6 @@ public class PlayerController : MonoBehaviour {
 				// Right Bumper
 				GameController.ActiveHero().ChangeLaunchForce();
 			}
-
 
 			/* Botões soltos */
 			if (Input.GetKeyUp (KeyCode.Joystick1Button13)) {
@@ -288,9 +284,9 @@ public class PlayerController : MonoBehaviour {
 			}
 
 
-			if (Input.GetKey (KeyCode.Joystick1Button15)) {
-				// Xbox Button
-			}
+			// if (Input.GetKey (KeyCode.Joystick1Button15)) {
+			// 	// Xbox Button
+			// }
 			if (Input.GetKey (KeyCode.Joystick1Button16)) {
 				// Button A
 				GameController.ActiveHero().ChangeSkill(1);
