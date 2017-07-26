@@ -26,6 +26,12 @@ public class Archer : HeroController {
 		_dmgReceivedMultiplier = DmgReceivedMultiplier;
 		_angle = 0;
 		_launchForce = 0;
+
+		_angleSkill [0] = Mathf.Deg2Rad *  90.0f;
+		_angleSkill [1] = Mathf.Deg2Rad * 100.0f;
+		_angleSkill [2] = Mathf.Deg2Rad * 120.0f; 
+		_angleSkill [3] = Mathf.Deg2Rad * 270.0f;
+
 		ch = GetComponent<CharacterController2D> ();
 		_velocity = Velocity;
 	}

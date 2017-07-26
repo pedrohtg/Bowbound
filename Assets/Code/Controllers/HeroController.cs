@@ -16,6 +16,7 @@ public abstract class HeroController : MonoBehaviour {
 
 	protected bool _dir;
 	protected int _health, _energy, _speed;
+	protected int[] _angleSkill = new int[4];
 	protected float _dmgCausedMultiplier, _dmgReceivedMultiplier, _velocity;
 	protected float _angle, _launchForce;
 	protected int _skill = 1;
@@ -52,12 +53,12 @@ public abstract class HeroController : MonoBehaviour {
 		if (dir == UP) 
 		{
 			_angle += increase * Time.deltaTime;
-			_angle = Mathf.Min (_angle, Mathf.PI / 2.0f);
+			_angle = Mathf.Min (_angle, _angleSkill[_skill - 1]/2.0f);
 		} 
 		else 
 		{
 			_angle -= increase * Time.deltaTime;
-			_angle = Mathf.Max (_angle, 0.0f);
+			_angle = Mathf.Max (_angle, 0.0f - _angleSkill[_skill - 1]/2.0f);
 		}
 	}
 
