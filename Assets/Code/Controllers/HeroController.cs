@@ -31,6 +31,9 @@ public abstract class HeroController : MonoBehaviour {
 			go.transform.SetParent (this.gameObject.transform);
 			go.transform.localScale = new Vector3(1.5f,2.0f,1);
 			go.transform.localPosition = new Vector3(0, 0, 0);
+
+			ac = go.GetComponent<AimController> ();
+
 			ac.Hide ();
 		}
 	}
