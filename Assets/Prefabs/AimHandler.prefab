@@ -123,13 +123,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427111782707428}
-  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4722206704689614}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4722206704689614
 Transform:
   m_ObjectHideFlags: 1
@@ -153,7 +153,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1556666032982022}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.38268346, w: 0.9238795}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -171,13 +171,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf399ab8b639e01419adf8bd70464480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circle: {fileID: 0}
-  btLimiter: {fileID: 0}
-  upLimiter: {fileID: 0}
-  aim: {fileID: 0}
+  circle: {fileID: 1305082979539516}
+  btLimiter: {fileID: 1556666032982022}
+  upLimiter: {fileID: 1427111782707428}
+  aim: {fileID: 1639684689404330}
   hide: 0
-  show: 0
-  updateOnlyAim: 0
+  show: 1
+  updateOnlyAim: 1
 --- !u!212 &212004044733936944
 SpriteRenderer:
   m_ObjectHideFlags: 1
