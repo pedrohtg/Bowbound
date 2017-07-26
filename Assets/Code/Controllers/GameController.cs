@@ -66,10 +66,12 @@ public class GameController : MonoBehaviour
 		else
 			Instance ()._myText_PlayerName.text	= "CADE HEROI?";
 
+		Instance ()._myActiveHero = null;
+
 		Instance ()._myCurrTurnPrepTime = GameConfig.turnPreparationTime;
 		Instance ()._myCurrTurnTime 	= GameConfig.turnTime;
 
-		if (!Instance ().IsInvoking ("TurnStartCountDown")) 
+		if (!Instance ().IsInvoking ("TurnStartCountDown"))
 		{
 			Instance ().Invoke ("TurnStartCountDown", 1.0f);
 		}
@@ -81,6 +83,7 @@ public class GameController : MonoBehaviour
 		{
 			Invoke ("TurnCountDown", 1.0f);
 			Instance ()._myText_TurnPrepTime.gameObject.SetActive (false);
+			Instance ()._myActiveHero = ((GameObject)(Instance ()._myHeroActionOrder [0])).GetComponent<HeroController> ();
 		} 
 		else 
 		{
@@ -134,12 +137,12 @@ public class GameController : MonoBehaviour
 		Array.Sort (GameConfig.selectedClasses);
 		Instance ()._myHeroActionOrder = new ArrayList ();
 
-		for (int i = 0; i < GameConfig.characterAmount; i++) 
-		{
+		for (int i = 0; i < GameConfig.characterAmount; i++) {
 			Debug.Log ("CHAR " + GameConfig.selectedClasses [i]);
 			GameObject go = GameObject.Instantiate (HeroPrefabs [GameConfig.selectedClasses [i]]);
 			go.GetComponent<HeroController> ().Initialise ();
 			Instance ()._myHeroActionOrder.Add (go);
+			go.transform.position = GameObject.Find ("SpawnPointPlayer" + (i+1)).transform.position;
 		}
 
 		BeginTurn ();

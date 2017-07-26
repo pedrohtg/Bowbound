@@ -33,8 +33,8 @@ public class PlayerController : MonoBehaviour {
 		bool UP, DOWN, LEFT, RIGHT;
 		UP = Input.GetKeyDown (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.W);
 		DOWN = Input.GetKeyDown (KeyCode.DownArrow) || Input.GetKeyDown (KeyCode.S);
-		LEFT = Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKeyDown (KeyCode.A);
-		RIGHT = Input.GetKeyDown (KeyCode.RightArrow) || Input.GetKeyDown (KeyCode.D);
+		LEFT = Input.GetKeyDown (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A);
+		RIGHT = Input.GetKeyDown (KeyCode.RightArrow) || Input.GetKey (KeyCode.D);
 
 		if (UP || DOWN) {
 			if (UP) {
