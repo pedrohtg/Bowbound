@@ -25,7 +25,14 @@ public abstract class HeroController : MonoBehaviour {
 	public AimController ac;
 	public CharacterController2D ch;
 
-	public abstract void Initialise ();
+	public virtual void Initialise (){
+		if (ac != null) {
+			GameObject go = GameObject.Instantiate (ac.gameObject);
+			go.transform.SetParent (this.gameObject.transform);
+			go.transform.localScale = new Vector3(1.5f,2.0f,1);
+			go.transform.localPosition = new Vector3(0, 0, 0);
+		}
+	}
 
 	public string GetName()
 	{

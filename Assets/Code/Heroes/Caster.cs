@@ -17,6 +17,7 @@ public class Caster : HeroController {
 
 	//Initialise
 	public override void Initialise(){
+		base.Initialise ();
 		_name = "Caster";
 		_health = Health;
 		_energy = 0;

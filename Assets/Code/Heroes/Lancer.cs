@@ -17,6 +17,7 @@ public class Lancer : HeroController {
 
 	//Initialise
 	public override void Initialise(){
+		base.Initialise ();
 		_name = "Lancer";
 		_health = Health;
 		_energy = 0;

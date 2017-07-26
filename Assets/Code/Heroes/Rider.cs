@@ -17,6 +17,7 @@ public class Rider : HeroController {
 
 	//Initialise
 	public override void Initialise(){
+		base.Initialise ();
 		_name = "Rider";
 		_health = Health;
 		_energy = 0;

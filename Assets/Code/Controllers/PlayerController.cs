@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour {
 		if (Mathf.Abs (X) >= 0.25F || Mathf.Abs (Y) >= 0.25F) {
 			if (Mathf.Abs(X) >= Mathf.Abs(Y)) {
 				bool a;
-				a = (X > 0) ? true : false;
+				a = (X > 0) ? false : true;
 				GameController.ActiveHero().Walk(a);
 			} else {
 				bool a;

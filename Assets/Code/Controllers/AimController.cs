@@ -20,7 +20,10 @@ public class AimController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		circle = GameObject.Instantiate(circle);
+		btLimiter = GameObject.Instantiate(btLimiter);
+		upLimiter = GameObject.Instantiate(upLimiter);
+		aim = GameObject.Instantiate(aim);
 	}
 	
 	// Update is called once per frame
@@ -31,7 +34,7 @@ public class AimController : MonoBehaviour {
 		else {
 			if (updateOnlyAim) {
 				aim.transform.localEulerAngles = new Vector3 (0, 0, aimAng);
-				(aim.GetComponent (typeof(SpriteRenderer)) as SpriteRenderer).enabled = true;
+				aim.GetComponent<SpriteRenderer>().enabled = true;
 			}
 			if (show) {
 				Show ();		
@@ -41,30 +44,30 @@ public class AimController : MonoBehaviour {
 
 	public void Hide(){
 		circle.transform.position = circleCenter;
-		(circle.GetComponent (typeof(SpriteRenderer)) as SpriteRenderer).enabled = false;
+		circle.GetComponent<SpriteRenderer>().enabled = false;
 
 		btLimiter.transform.localEulerAngles = new Vector3 (0, 0, btLimiterAng);
-		(btLimiter.GetComponent (typeof(SpriteRenderer)) as SpriteRenderer).enabled = false;
+		btLimiter.GetComponent<SpriteRenderer>().enabled = false;
 
 		upLimiter.transform.localEulerAngles = new Vector3 (0, 0, upLimiterAng);
-		(upLimiter.GetComponent (typeof(SpriteRenderer)) as SpriteRenderer).enabled = false;
+		upLimiter.GetComponent<SpriteRenderer>().enabled = false;
 
 		aim.transform.localEulerAngles = new Vector3 (0, 0, aimAng);
-		(aim.GetComponent (typeof(SpriteRenderer)) as SpriteRenderer).enabled = false;
+		aim.GetComponent<SpriteRenderer>().enabled = false;
 	}
 
 	public void Show(){
-		//circle.transform.position = circleCenter;
-		(circle.GetComponent (typeof(SpriteRenderer)) as SpriteRenderer).enabled = true;
+		circle.transform.position = circleCenter;
+		circle.GetComponent<SpriteRenderer>().enabled = true;
 
 		btLimiter.transform.localEulerAngles = new Vector3 (0, 0, btLimiterAng);
-		(btLimiter.GetComponent (typeof(SpriteRenderer)) as SpriteRenderer).enabled = true;
+		btLimiter.GetComponent<SpriteRenderer>().enabled = true;
 
 		upLimiter.transform.localEulerAngles = new Vector3 (0, 0, upLimiterAng);
-		(upLimiter.GetComponent (typeof(SpriteRenderer)) as SpriteRenderer).enabled = true;
+		upLimiter.GetComponent<SpriteRenderer>().enabled = true;
 
 		aim.transform.localEulerAngles = new Vector3 (0, 0, aimAng);
-		(aim.GetComponent (typeof(SpriteRenderer)) as SpriteRenderer).enabled = true;
+		aim.GetComponent<SpriteRenderer>().enabled = true;
 
 
 		show = false;
@@ -73,8 +76,10 @@ public class AimController : MonoBehaviour {
 	}
 
 	public void SetAimAng(float ang){
+		Debug.Log (ang);
 		aimAng = ang * Mathf.Rad2Deg;
-		aim.transform.localEulerAngles = new Vector3 (0, 0, ang * Mathf.Rad2Deg);
+		Debug.Log (aimAng);
+		aim.transform.eulerAngles = new Vector3 (0, 0, aimAng);
 		show = true;
 	}
 
