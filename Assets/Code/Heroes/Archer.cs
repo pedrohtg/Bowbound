@@ -14,7 +14,7 @@ public class Archer : HeroController {
 	public static int RequiredEnergyForSkill4 = 100;
 
 	//Initialise
-	public void Initialise(){
+	public override void Initialise(){
 		_health = Health;
 		_energy = 0;
 		_speed = Speed;
@@ -55,15 +55,15 @@ public class Archer : HeroController {
 	}
 
 	public override void UseSkill2(){
-
+		
 	}
 
 	public override void UseSkill3(){
-
+		
 	}
 
 	public override void UseSkill4(){
-
+		
 	}
 
 }

@@ -69,10 +69,10 @@ public abstract class HeroController : MonoBehaviour {
 	public abstract bool CanUseSkill3 ();
 	public abstract bool CanUseSkill4 ();
 
-	public abstract bool UseSkill1 ();
-	public abstract bool UseSkill2 ();
-	public abstract bool UseSkill3 ();
-	public abstract bool UseSkill4 ();
+	public abstract void UseSkill1 ();
+	public abstract void UseSkill2 ();
+	public abstract void UseSkill3 ();
+	public abstract void UseSkill4 ();
 
 
 	public void Attack()
