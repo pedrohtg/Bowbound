@@ -72,19 +72,22 @@ public class AimController : MonoBehaviour {
 
 	}
 
-	void setAimAng(float ang){
+	public void SetAimAng(float ang){
 		aimAng = ang * Mathf.Rad2Deg;
 		aim.transform.localEulerAngles = new Vector3 (0, 0, ang * Mathf.Rad2Deg);
+		show = true;
 	}
 
-	void SetBtLimiterAng(float ang){
+	public void SetBtLimiterAng(float ang){
 		btLimiterAng = ang * Mathf.Rad2Deg;
 		btLimiter.transform.localEulerAngles = new Vector3 (0, 0, ang * Mathf.Rad2Deg);
+		show = true;
 	}
 
-	void SetUpLimiterAng(float ang){
+	public void SetUpLimiterAng(float ang){
 		upLimiterAng = ang * Mathf.Rad2Deg;
 		upLimiter.transform.localEulerAngles = new Vector3 (0, 0, ang * Mathf.Rad2Deg);
+		show = true;
 	}
 
 }

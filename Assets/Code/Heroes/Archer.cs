@@ -34,16 +34,20 @@ public class Archer : HeroController {
 
 		ch = GetComponent<CharacterController2D> ();
 		_velocity = Velocity;
+
 	}
 
 	// Use this for initialization
 	void Start () {
-		
+		//Initialise ();
+		//Debug.Log(_angleSkill [_skill - 1]);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		//Debug.Log (_angleSkill [_skill - 1]);
+		//ac.SetBtLimiterAng (-_angleSkill [_skill - 1]);
+		//ac.SetUpLimiterAng (_angleSkill [_skill - 1]);
 	}
 
 	public override bool CanUseSkill2(){

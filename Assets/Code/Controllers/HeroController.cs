@@ -22,6 +22,7 @@ public abstract class HeroController : MonoBehaviour {
 	protected int _skill = 1;
 	protected string _name = "NULL";
 
+	public AimController ac;
 	public CharacterController2D ch;
 
 	public abstract void Initialise ();
@@ -49,6 +50,7 @@ public abstract class HeroController : MonoBehaviour {
 
 	public void ChangeAngle(bool dir)
 	{
+		Debug.Log ("CHANGE ANG");
 		float increase = _angleIncrease;
 		if (dir == UP) 
 		{
@@ -60,6 +62,8 @@ public abstract class HeroController : MonoBehaviour {
 			_angle -= increase * Time.deltaTime;
 			_angle = Mathf.Max (_angle, 0.0f - _angleSkill[_skill - 1]);
 		}
+
+		ac.SetAimAng (_angle);
 	}
 
 	public void ChangeLaunchForce()
@@ -112,6 +116,8 @@ public abstract class HeroController : MonoBehaviour {
 	public void ChangeSkill(int skill)
 	{
 		_skill = skill;
+		ac.SetBtLimiterAng (-_angleSkill [_skill - 1]);
+		ac.SetUpLimiterAng (_angleSkill [_skill - 1]);
 	}
 
 	public void IncreaseEnergy(int dmg)
