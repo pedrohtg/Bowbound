@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Prime31;
 
 public class Archer : HeroController {
 
@@ -8,6 +9,7 @@ public class Archer : HeroController {
 	public static int Speed = 5;
 	public static float DmgCausedMultiplier = .6f;
 	public static float DmgReceivedMultiplier = .4f;
+	public static float Velocity = 1.0f;
 
 	public static int RequiredEnergyForSkill2 = 40;
 	public static int RequiredEnergyForSkill3 = 60;
@@ -23,7 +25,8 @@ public class Archer : HeroController {
 		_dmgReceivedMultiplier = DmgReceivedMultiplier;
 		_angle = 0;
 		_launchForce = 0;
-		ch = new CharacterController ();
+		ch = GetComponent<CharacterController2D> ();
+		_velocity = Velocity;
 	}
 
 	// Use this for initialization

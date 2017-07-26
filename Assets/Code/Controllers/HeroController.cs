@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Prime31;
 
 public abstract class HeroController : MonoBehaviour {
 	//DIRECTION CONSTANTS
@@ -20,7 +21,7 @@ public abstract class HeroController : MonoBehaviour {
 	protected int _skill = 1;
 	protected string _name = "NULL";
 
-	public CharacterController ch;
+	public CharacterController2D ch;
 
 	public abstract void Initialise ();
 
@@ -34,12 +35,14 @@ public abstract class HeroController : MonoBehaviour {
 		if (dir == LEFT) 
 		{
 			_dir = LEFT;
-			ch.Move(new Vector3(-_velocity, 0, 0));
+			Debug.Log (ch);
+			ch.move(new Vector3(-_velocity, 0, 0));
 		} 
 		else 
 		{
 			_dir = RIGHT;
-			ch.Move(new Vector3(_velocity, 0, 0));	
+			Debug.Log (ch);
+			ch.move(new Vector3(_velocity, 0, 0));	
 		}
 	}
 
