@@ -26,18 +26,28 @@ public class Archer : HeroController {
 		_dmgReceivedMultiplier = DmgReceivedMultiplier;
 		_angle = 0;
 		_launchForce = 0;
+
+		_angleSkill [0] = Mathf.Deg2Rad * 45.0f;
+		_angleSkill [1] = Mathf.Deg2Rad * 50.0f;
+		_angleSkill [2] = Mathf.Deg2Rad * 60.0f; 
+		_angleSkill [3] = Mathf.Deg2Rad * 145.0f;
+
 		ch = GetComponent<CharacterController2D> ();
 		_velocity = Velocity;
+
 	}
 
 	// Use this for initialization
 	void Start () {
-		
+		//Initialise ();
+		//Debug.Log(_angleSkill [_skill - 1]);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		//Debug.Log (_angleSkill [_skill - 1]);
+		//ac.SetBtLimiterAng (-_angleSkill [_skill - 1]);
+		//ac.SetUpLimiterAng (_angleSkill [_skill - 1]);
 	}
 
 	public override bool CanUseSkill2(){
