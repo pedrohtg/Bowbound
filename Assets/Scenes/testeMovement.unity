@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 580494060}
   - component: {fileID: 580494062}
   - component: {fileID: 580494061}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 580494057}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -254,7 +254,7 @@ MonoBehaviour:
   _skinWidth: 0.02
   platformMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1
   triggerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -311,7 +311,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1426223533}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4545035, y: 1.0482495, z: -2.6190705}
+  m_LocalPosition: {x: 0.31, y: 0.03, z: -2.6190705}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 580494058}
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 1675921681}
   - component: {fileID: 1675921683}
   - component: {fileID: 1675921680}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GroundObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,11 +12,12 @@ public abstract class HeroController : MonoBehaviour {
 	public static float _angleIncrease = 50.0f;
 	public static float _forceIncrease = 2.5f;
 
-	private bool _dir;
-	private int _health, _energy, _speed;
-	private float _dmgCausedMultiplier, _dmgReceivedMultiplier, _velocity;
-	private float _angle, _launchForce;
-	private int _skill = 1;
+	protected bool _dir;
+	protected int _health, _energy, _speed;
+	protected float _dmgCausedMultiplier, _dmgReceivedMultiplier, _velocity;
+	protected float _angle, _launchForce;
+	protected int _skill = 1;
+	protected string _name = "NULL";
 
 	public CharacterController ch;
 
@@ -30,6 +31,10 @@ public abstract class HeroController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public string getName(){
+		return _name;
 	}
 
 	public void Walk(bool dir){	
@@ -119,7 +124,7 @@ public abstract class HeroController : MonoBehaviour {
 	}
 
 	public void Death(){
-		Debug.Log ("Morri. ");
+		Debug.Log ("Morri.");
 		GameController.Kill (this);
 	}
 
