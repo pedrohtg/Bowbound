@@ -52,16 +52,16 @@ public class GameController : MonoBehaviour
 	{
 		Instance ()._myText_TurnPrepTime.gameObject.SetActive (true);
 
-		Instance()._myText_TurnTime.text 	= "" + Instance()._myTurnTime;
-		Instance()._myText_TurnPrepTime.text= "" + Instance()._myTurnPrepTime;
+		Instance()._myText_TurnTime.text 	= "" + GameConfig.turnTime;
+		Instance()._myText_TurnPrepTime.text= "" + GameConfig.turnPreparationTime;
 
 		if (Instance ()._myActiveHero != null)
 			Instance ()._myText_PlayerName.text	= "" + Instance ()._myActiveHero.GetName ();
 		else
 			Instance ()._myText_PlayerName.text	= "CADE HEROI?";
 
-		Instance ()._myCurrTurnPrepTime = Instance ()._myTurnPrepTime;
-		Instance ()._myCurrTurnTime 	= Instance ()._myTurnTime;
+		Instance ()._myCurrTurnPrepTime = GameConfig.turnPreparationTime;
+		Instance ()._myCurrTurnTime 	= GameConfig.turnTime;
 
 		if (!Instance ().IsInvoking ("TurnStartCountDown")) 
 		{
@@ -107,26 +107,9 @@ public class GameController : MonoBehaviour
 	#endregion
 
 	#region GAME CONFIGURATIONS
-	private int				_myTurnPrepTime		= 5;
 	private int				_myCurrTurnPrepTime	= 5;
-	private int				_myTurnTime			= 30;
 	private int				_myCurrTurnTime		= 30;
-	private bool			_myIsUsingJoystick	= true;
-
-	public static int	Config_TurnPrepTime()
-	{
-		return Instance()._myTurnPrepTime;
-	}
-
-	public static int	Config_TurnTime()
-	{
-		return Instance()._myTurnTime;
-	}
-
-	public static bool 	Config_IsUsingJoystick()
-	{
-		return Instance()._myIsUsingJoystick;
-	}
+		
 	#endregion
 
 	UnityEngine.UI.Text _myText_TurnTime;

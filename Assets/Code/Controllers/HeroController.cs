@@ -11,6 +11,7 @@ public abstract class HeroController : MonoBehaviour {
 
 	public static float _angleIncrease = 50.0f;
 	public static float _forceIncrease = 2.5f;
+	public static int _maxEnergy = 100;
 
 	protected bool _dir;
 	protected int _health, _energy, _speed;
@@ -23,44 +24,42 @@ public abstract class HeroController : MonoBehaviour {
 
 	public abstract void Initialise ();
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-	public string GetName(){
+	public string GetName()
+	{
 		return _name;
 	}
 
-	public void Walk(bool dir){	
-		if (dir == LEFT) {
+	public void Walk(bool dir)
+	{	
+		if (dir == LEFT) 
+		{
 			_dir = LEFT;
-			ch.Move(new Vector3(-1 * _velocity, 0, 0));
+			ch.Move(new Vector3(-_velocity, 0, 0));
 		} 
-		else {
+		else 
+		{
 			_dir = RIGHT;
 			ch.Move(new Vector3(_velocity, 0, 0));	
 		}
 	}
 
-	public void ChangeAngle(bool dir){
+	public void ChangeAngle(bool dir)
+	{
 		float increase = _angleIncrease;
-		if (dir == UP) {
+		if (dir == UP) 
+		{
 			_angle += increase * Time.deltaTime;
 			_angle = Mathf.Min (_angle, Mathf.PI / 2.0f);
 		} 
-		else {
+		else 
+		{
 			_angle -= increase * Time.deltaTime;
 			_angle = Mathf.Max (_angle, 0.0f);
 		}
 	}
 
-	public void ChangeLaunchForce(){
+	public void ChangeLaunchForce()
+	{
 		_launchForce += _forceIncrease * Time.deltaTime;
 		_launchForce = Mathf.Min (_launchForce, 1.0f);
 
@@ -76,23 +75,28 @@ public abstract class HeroController : MonoBehaviour {
 	public abstract bool UseSkill4 ();
 
 
-	public void Attack(){
-		switch (_skill) {
+	public void Attack()
+	{
+		switch (_skill) 
+		{
 		case 1:
 			UseSkill1 ();
 			break;
 		case 2:
-			if (CanUseSkill2 ()) {
+			if (CanUseSkill2 ()) 
+			{
 				UseSkill2 ();
 			}
 			break;
 		case 3:
-			if (CanUseSkill3 ()) {
+			if (CanUseSkill3 ()) 
+			{
 				UseSkill3 ();
 			}
 			break;
 		case 4:
-			if (CanUseSkill4 ()) {
+			if (CanUseSkill4 ()) 
+			{
 				UseSkill4 ();
 			}
 			break;
@@ -101,29 +105,34 @@ public abstract class HeroController : MonoBehaviour {
 		}
 	}
 
-	public void ChangeSkill(int skill){
+	public void ChangeSkill(int skill)
+	{
 		_skill = skill;
 	}
 
-	public void IncreaseEnergy(int dmg){
+	public void IncreaseEnergy(int dmg)
+	{
 		_energy += (int)((float)dmg * _dmgCausedMultiplier);
-		_energy = Mathf.Min (_energy, 100);
+		_energy = Mathf.Min (_energy, _maxEnergy);
 	}
 
-	public void TakeDamage(int dmg){
+	public void TakeDamage(int dmg)
+	{
 		_health -= dmg;
 		_energy += (int)((float)dmg * _dmgReceivedMultiplier);
-		_energy = Mathf.Min (_energy, 100);
+		_energy = Mathf.Min (_energy, _maxEnergy);
 
 		GameController.ActiveHero().IncreaseEnergy(dmg);
 
-		if (_health <= 0) {
+		if (_health <= 0) 
+		{
 			Death ();
 		}
 
 	}
 
-	public void Death(){
+	public void Death()
+	{
 		Debug.Log ("Morri.");
 		GameController.Kill (this);
 	}
