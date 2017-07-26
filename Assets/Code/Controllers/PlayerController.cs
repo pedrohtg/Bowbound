@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update () {
-		if (GameController.Config_IsUsingJoystick()) {
+		if (GameConfig.useJoystick) {
 			inputJoystick (OperationSystem);
 		} else {
 			inputKeyboard ();
