@@ -16,7 +16,7 @@ public abstract class HeroController : MonoBehaviour {
 
 	protected bool _dir;
 	protected int _health, _energy, _speed;
-	protected int[] _angleSkill = new int[4];
+	protected float[] _angleSkill = new float[4];
 	protected float _dmgCausedMultiplier, _dmgReceivedMultiplier, _velocity;
 	protected float _angle, _launchForce;
 	protected int _skill = 1;
