@@ -1,5 +1,4 @@
-﻿/*
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,21 +36,34 @@ public class Archer : HeroController {
 		
 	}
 
-	public bool CanUseSkill2(){
+	public override bool CanUseSkill2(){
 		return _energy >= RequiredEnergyForSkill2;
 	}
 
 
-	public bool CanUseSkill3(){
+	public override bool CanUseSkill3(){
 		return _energy >= RequiredEnergyForSkill3;
 	}
 
 
-	public bool CanUseSkill4(){
+	public override bool CanUseSkill4(){
 		return _energy >= RequiredEnergyForSkill4;
 	}
 
+	public override void UseSkill1(){
+		
+	}
 
+	public override void UseSkill2(){
+
+	}
+
+	public override void UseSkill3(){
+
+	}
+
+	public override void UseSkill4(){
+
+	}
 
 }
-*/
