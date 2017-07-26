@@ -53,12 +53,12 @@ public abstract class HeroController : MonoBehaviour {
 		if (dir == UP) 
 		{
 			_angle += increase * Time.deltaTime;
-			_angle = Mathf.Min (_angle, _angleSkill[_skill - 1]/2.0f);
+			_angle = Mathf.Min (_angle, _angleSkill[_skill - 1]);
 		} 
 		else 
 		{
 			_angle -= increase * Time.deltaTime;
-			_angle = Mathf.Max (_angle, 0.0f - _angleSkill[_skill - 1]/2.0f);
+			_angle = Mathf.Max (_angle, 0.0f - _angleSkill[_skill - 1]);
 		}
 	}
 
