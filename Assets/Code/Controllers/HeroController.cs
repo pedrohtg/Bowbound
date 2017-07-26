@@ -33,7 +33,7 @@ public abstract class HeroController : MonoBehaviour {
 		
 	}
 
-	public string getName(){
+	public string GetName(){
 		return _name;
 	}
 
