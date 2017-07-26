@@ -17,6 +17,7 @@ public class Lancer : HeroController {
 
 	//Initialise
 	public override void Initialise(){
+		_name = "Lancer";
 		_health = Health;
 		_energy = 0;
 		_speed = Speed;

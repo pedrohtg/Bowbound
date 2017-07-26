@@ -62,4 +62,9 @@ public class MainMenuController : MonoBehaviour
 		GameConfig.turnPreparationTime = (GameConfig.turnPreparationTime + 2) % GameConfig.maxTurnPreparationTime;
 		turnTimePrepText.text = "" + GameConfig.turnPreparationTime;
 	}
+
+	public void StartGame()
+	{
+		UnityEngine.SceneManagement.SceneManager.LoadScene (1);
+	}
 }

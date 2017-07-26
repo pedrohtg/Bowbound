@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameController : MonoBehaviour 
 {
+	public GameObject[] HeroPrefabs;
+
 	private static GameController _myInstance;
 
 	private static GameController Instance()
@@ -31,6 +34,7 @@ public class GameController : MonoBehaviour
 		
 	private Vector2 		_myWind;
 	private HeroController	_myActiveHero;
+	private ArrayList 		_myHeroActionOrder;
 
 	public static Vector2			Wind()
 	{
@@ -50,6 +54,8 @@ public class GameController : MonoBehaviour
 
 	public static void BeginTurn()
 	{
+		Instance ()._myActiveHero = ((GameObject)(Instance ()._myHeroActionOrder [0])).GetComponent<HeroController> ();
+
 		Instance ()._myText_TurnPrepTime.gameObject.SetActive (true);
 
 		Instance()._myText_TurnTime.text 	= "" + GameConfig.turnTime;
@@ -93,7 +99,10 @@ public class GameController : MonoBehaviour
 		int t = Instance ()._myCurrTurnTime;
 		if (t == 0) 
 		{
-			Debug.Log ("END TURN!!!");
+			Instance ()._myHeroActionOrder.RemoveAt (0);
+			Instance ()._myHeroActionOrder.Add (Instance ()._myActiveHero.gameObject);
+			Debug.Log ("PLAYER COUNT " + Instance ()._myHeroActionOrder.Count + "/" + GameConfig.characterAmount);
+			BeginTurn ();
 		} 
 		else 
 		{
@@ -121,6 +130,17 @@ public class GameController : MonoBehaviour
 		Instance()._myText_TurnTime		= GameObject.Find ("<TurnTime>").GetComponent<UnityEngine.UI.Text>();
 		Instance()._myText_TurnPrepTime	= GameObject.Find ("<TurnBegins>").GetComponent<UnityEngine.UI.Text>();
 		Instance()._myText_PlayerName	= GameObject.Find ("<PlayerName>").GetComponent<UnityEngine.UI.Text>();
+
+		Array.Sort (GameConfig.selectedClasses);
+		Instance ()._myHeroActionOrder = new ArrayList ();
+
+		for (int i = 0; i < GameConfig.characterAmount; i++) 
+		{
+			Debug.Log ("CHAR " + GameConfig.selectedClasses [i]);
+			GameObject go = GameObject.Instantiate (HeroPrefabs [GameConfig.selectedClasses [i]]);
+			go.GetComponent<HeroController> ().Initialise ();
+			Instance ()._myHeroActionOrder.Add (go);
+		}
 
 		BeginTurn ();
 	}

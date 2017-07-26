@@ -10,8 +10,6 @@ public class GameConfig : MonoBehaviour
 	public static int turnTime 		= 30;
 	public static int maxTurnTime 	= 60;
 
-	public static bool[] availableClasses = new bool[7];
-
 	public static int[] selectedClasses = new int[7];
 	public static int characterAmount;
 
@@ -20,8 +18,7 @@ public class GameConfig : MonoBehaviour
 	{
 		for (int i = 0; i < 7; i++) 
 		{
-			availableClasses [i] = true;
-			selectedClasses [i] = -1;
+			selectedClasses [i] = 10;
 		}
 		characterAmount = 0;
 	}

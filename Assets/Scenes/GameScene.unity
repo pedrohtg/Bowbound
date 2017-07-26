@@ -313,6 +313,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a32fef67a8a294ea638208a59f927e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HeroPrefabs:
+  - {fileID: 1625438159859558, guid: ed82875eaa17d16469aa4fdbf6bfa624, type: 2}
+  - {fileID: 1649213827175302, guid: a42a5df82c3c7a44d980a716f17a36bd, type: 2}
+  - {fileID: 1886904284679680, guid: 2f86ff852f850694aa3edddb60c4feac, type: 2}
+  - {fileID: 1022865479078824, guid: 3359e90282afd5c46bd6ed32a1fec10d, type: 2}
+  - {fileID: 1097666784737428, guid: 97f9ba9dd68a8214ab98fdbe50cc07ff, type: 2}
+  - {fileID: 1520753990547056, guid: b11cb048c710fed48850bb6bebe3c101, type: 2}
+  - {fileID: 1585911574975096, guid: ee97bfa699c449544a0fc541c47edfa0, type: 2}
 --- !u!4 &367249917
 Transform:
   m_ObjectHideFlags: 0

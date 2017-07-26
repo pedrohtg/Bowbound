@@ -17,6 +17,7 @@ public class Berseker : HeroController {
 
 	//Initialise
 	public override void Initialise(){
+		_name = "Berserker";
 		_health = Health;
 		_energy = 0;
 		_speed = Speed;
